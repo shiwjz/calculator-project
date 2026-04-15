@@ -24,6 +24,7 @@ class TestSubtract:
         assert subtract(3, 7) == -4
 
 
+
 # ─── 곱셈 ────────────────────────────────
 class TestMultiply:
     def test_multiply_basic(self):
@@ -34,6 +35,10 @@ class TestMultiply:
 
     def test_multiply_negatives(self):
         assert multiply(-2, 3) == -6
+    
+    def test_multiply_float(self):
+        """소수점 곱셈"""
+        self.assertAlmostEqual(multiply(0.1, 0.2), 0.02, places=5)
 
 
 # ─── 나눗셈 ──────────────────────────────
@@ -47,3 +52,18 @@ class TestDivide:
     def test_divide_by_zero_raises(self):
         with pytest.raises(ValueError):
             divide(5, 0)
+
+    def test_divide_negative(self):
+        """음수 나눗셈"""
+        self.assertEqual(divide(-10, 2), -5.0)
+
+    def test_divide_by_zero_msg(self):
+        """에러 메시지에 divisor 값 포함 확인"""
+        with self.assertRaises(ValueError) as ctx:
+            divide(5, 0)
+        self.assertIn("divisor was 0", str(ctx.exception))
+
+
+
+
+

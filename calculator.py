@@ -29,5 +29,6 @@ def divide(a, b):
     b가 0이면 ValueError를 발생시킵니다.
     """
     if b == 0:
-        raise ValueError("0으로 나눌 수 없습니다.")
+        raise ValueError(f"Cannot divide by zero: divisor was {b}"
+)
     return a / b
